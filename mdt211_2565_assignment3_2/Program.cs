@@ -67,6 +67,5 @@
         Queue<char> FruitList = new Queue<char>();
         InputFruit(FruitList);
         CutFruit(FruitList);
-
     }
 }
