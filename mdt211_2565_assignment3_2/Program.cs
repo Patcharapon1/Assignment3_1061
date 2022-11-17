@@ -12,7 +12,7 @@
         }
         return check;
     }
-    static void InputFruit(CircularLinkedList<char> FruitList)
+    static void InputFruit(Queue<char> FruitList)
     {
         char inputFruit;
         while(true)
@@ -24,51 +24,47 @@
                 break;
             }
 
-            FruitList.Add(inputFruit);
+            FruitList.Push(inputFruit);
         }
     }
 
 
-    static void CutFruit(CircularLinkedList<char> FruitList)
+    static void CutFruit(Queue<char> FruitList)
     {
-        for(int i = 0 ; i<FruitList.GetLength() ; i++)
+        int a = FruitList.GetLength();
+        int x = 0;
+        while(a!=x)
         {
-            if(FruitList.Get(i)=='L')
+            if(FruitList.Get(x)=='L')
             {
                 Console.Write("1 ");
+                FruitList.Pop();
+                FruitList.Push('M');
+                FruitList.Push('M');
             }
-            if(FruitList.Get(i)=='M')
+            if(FruitList.Get(x)=='M')
             {
                 Console.Write("2 ");
+                FruitList.Pop();
+                FruitList.Push('S');
+                FruitList.Push('S');
+                FruitList.Push('S');
             }
-            if(FruitList.Get(i)=='S')
+            if(FruitList.Get(x)=='S')
             {
                 Console.Write("3 "); 
+                FruitList.Pop();
             }
+            a = FruitList.GetLength();
+
         }
-        for(int i = 0 ; i<FruitList.GetLength() ; i++)
-        {
-            if(FruitList.Get(i)=='L')
-            {
-                Console.Write("2 2 ");
-            }
-            if(FruitList.Get(i)=='M')
-            {
-                Console.Write("3 3 3 ");
-            }
-        }
-        for(int i = 0 ; i<FruitList.GetLength() ; i++)
-        {
-            if(FruitList.Get(i)=='L')
-            {
-                Console.Write("3 3 3 3 3 3 ");
-            }
-        }
+        
+        
     }
 
     static void Main(string[] args)
     {
-        CircularLinkedList<char> FruitList = new CircularLinkedList<char>();
+        Queue<char> FruitList = new Queue<char>();
         InputFruit(FruitList);
         CutFruit(FruitList);
 
